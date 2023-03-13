@@ -11,9 +11,13 @@ form.addEventListener('input', throttle(onFormInput, 500));
 
 function onFormSubmit(event) {
     event.preventDefault();
-    event.currentTarget.reset();
-    localStorage.removeItem(storageKey);
-    console.log(formValues);
+    if (emailArea.value && messageArea.value) {
+        event.currentTarget.reset();
+        localStorage.removeItem(storageKey);
+        console.log(formValues);
+        return
+    }
+    alert('Шановний користувач! Будьте ласкаві заповните всі поля форми.');
 }
 
 function onFormInput(event) {
